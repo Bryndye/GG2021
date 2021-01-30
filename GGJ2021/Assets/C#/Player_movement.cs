@@ -30,7 +30,9 @@ public class Player_movement : Singleton<Player_movement>
     [SerializeField] bool atterir;
     [SerializeField] bool onGround;
     [SerializeField] LayerMask layerGround;
-    [SerializeField] Transform groundCheckPoint, groundCheckPoint2;
+    [SerializeField] Transform groundCheckPoint;
+    [SerializeField] Transform penteCheck, penteCheck2;
+    bool rightSide, leftSide;
 
     private void Awake()
     {
@@ -50,6 +52,7 @@ public class Player_movement : Singleton<Player_movement>
     }
     private void Update()
     {
+        CheckPente();
         onGround = CheckGround();
         if (!InCinematic && CanMove)
         {
@@ -149,6 +152,69 @@ public class Player_movement : Singleton<Player_movement>
     private bool CheckGround()
     {
         return Physics2D.OverlapCircle(groundCheckPoint.position, 0.1f, layerGround);
+    }
+    private void CheckPente()
+    {
+        RaycastHit2D rayRighRight = Physics2D.Raycast(penteCheck2.position, Vector2.right, 0.1f );
+        RaycastHit2D rayRighDown = Physics2D.Raycast(penteCheck2.position, Vector2.down, 0.1f);
+        RaycastHit2D rayLeftLeft = Physics2D.Raycast(penteCheck.position, Vector2.left, 0.1f);
+        RaycastHit2D rayLeftDown = Physics2D.Raycast(penteCheck.position, Vector2.down, 0.1f);
+        Debug.DrawRay(penteCheck2.position, Vector2.right * 0.1f);
+        Debug.DrawRay(penteCheck2.position, Vector2.down * 0.1f);
+        Debug.DrawRay(penteCheck.position, Vector2.left * 0.1f);
+        Debug.DrawRay(penteCheck.position, Vector2.down * 0.1f);
+
+        if (rayRighRight.collider != null && rayRighRight.collider.CompareTag("pente") || rayRighDown.collider != null && rayRighDown.collider.CompareTag("pente"))
+        {
+            rightSide = true;
+            //Debug.Log("sur une pente a droite");
+        }
+        else
+        {
+            rightSide = false;
+            //Debug.Log("pas pente droite");
+        }
+        if (rayLeftLeft.collider != null && rayLeftLeft.collider.CompareTag("pente") || rayLeftDown.collider != null && rayLeftDown.collider.CompareTag("pente"))
+        {
+            leftSide = true;
+            //Debug.Log("sur une pente a gauche");
+        }
+        else
+        {
+            leftSide = false;
+            //Debug.Log("pas pente gauche");
+        }
+
+        if (rightSide && Input.GetAxisRaw("Horizontal") > 0)
+        {
+            rb.gravityScale = 0;
+        }
+        else if (rightSide && Input.GetAxisRaw("Horizontal") < 0)
+        {
+            rb.gravityScale = 5;
+        }
+        else if(rightSide && Input.GetAxisRaw("Horizontal") == 0)
+        {
+            rb.gravityScale = 0;
+        }
+
+        if (leftSide && Input.GetAxisRaw("Horizontal") > 0)
+        {
+            rb.gravityScale = 5;
+        }
+        else if (leftSide && Input.GetAxisRaw("Horizontal") < 0)
+        {
+            rb.gravityScale = 0;
+        }
+        else if (leftSide && Input.GetAxisRaw("Horizontal") == 0)
+        {
+            rb.gravityScale = 0;
+        }
+
+        if (!leftSide && !rightSide)
+        {
+            rb.gravityScale = 5;
+        }
     }
     private void CheckOnGroundFirst()
     {
