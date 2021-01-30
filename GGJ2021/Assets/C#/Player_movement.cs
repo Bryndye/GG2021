@@ -121,7 +121,7 @@ public class Player_movement : Singleton<Player_movement>
         }
 
         //jump
-        if (Input.GetKeyDown(KeyCode.Z) && hangcounter > 0 && !jumped)
+        if ((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) && hangcounter > 0 && !jumped)
         {
             //rb.velocity = new Vector2(rb.velocity.x, forceJump);
 
