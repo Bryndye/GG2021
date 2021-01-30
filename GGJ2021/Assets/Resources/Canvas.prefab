@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 377542720657341983}
   - component: {fileID: 377542720657341982}
   - component: {fileID: 377542720657341981}
+  - component: {fileID: 8636520669979079684}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -118,7 +119,29 @@ MonoBehaviour:
   sentencesStock: []
   audioc: []
   acStock: []
+  DarkFond: {fileID: 4365946459515805665}
+  TimeTransition: 0
+  btt: 0
   latence: 0.05
+--- !u!95 &8636520669979079684
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377542720657341980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9db16034ef42c44da861a409602e14f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &377542721548403395
 GameObject:
   m_ObjectHideFlags: 0
