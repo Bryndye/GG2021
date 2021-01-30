@@ -5,7 +5,7 @@ using UnityEngine;
 public class Magik_Plateform : MonoBehaviour
 {
     BoxCollider2D b;
-    SpriteRenderer[] sr;
+    public SpriteRenderer[] sr;
     private void Awake() { 
         b = GetComponent<BoxCollider2D>();
         Desactive();
