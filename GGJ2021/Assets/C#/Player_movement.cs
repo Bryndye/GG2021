@@ -139,7 +139,7 @@ public class Player_movement : Singleton<Player_movement>
 
     private bool CheckGround()
     {
-        return Physics2D.OverlapCircle(groundCheckPoint.position, 0.1f, layerGround) || Physics2D.OverlapCircle(groundCheckPoint2.position, 0.1f, layerGround);
+        return Physics2D.OverlapCircle(groundCheckPoint.position, 0.1f, layerGround);
     }
     private void CheckOnGroundFirst()
     {
@@ -150,7 +150,6 @@ public class Player_movement : Singleton<Player_movement>
         }
     }
     #endregion
-
 
     #region VentSouvenir
     public Event_souvenirs es;
@@ -170,7 +169,7 @@ public class Player_movement : Singleton<Player_movement>
         if (collision.CompareTag("Souvenir"))
         {
             es = collision.GetComponent<Event_souvenirs>();
-            if (es != null)
+            if (es != null && es.Index < es.IndexMax)
             {
                 canInteract = true;
             }
