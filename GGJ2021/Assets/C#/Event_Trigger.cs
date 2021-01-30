@@ -78,21 +78,26 @@ public class Event_Trigger : MonoBehaviour
         }
         if (Type == TypeEvent.Cinematic && done && endRunning)
         {
+            pm.Anim_Player.SetBool("IsMoving", false);
+            pm.Anim_Player.SetTrigger("ChangeMode");
             pm.rb.velocity = new Vector2(0, pm.rb.velocity.y);
         }
     }
     private void Cinematique()
     {
         pm.InCinematic = true;
-        //pm.Anim_Player.SetBool(); launch anim run
+        pm.Anim_Player.SetBool("IsMoving", true);
 
+        //pm.Anim_Player.SetBool(); launch anim run
+        pm.Anim_Player.SetTrigger("ChangeMode");
         Invoke(nameof(EndRun), TimeRun);
         Invoke(nameof(EndCinematic),  TimeCinematic);
     }
     private void EndRun()
     {
         endRunning = true;
-        //print("end run");
+
+        print("end run");
     }
     private void EndCinematic()
     {
@@ -106,6 +111,7 @@ public class Event_Trigger : MonoBehaviour
     {
         if (Anim_Femme != null)
         {
+            Anim_Femme.SetTrigger("Disappear");
             //play anim disappear
         }
     }

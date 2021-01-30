@@ -21,26 +21,25 @@ public class CanvasManager : Singleton<CanvasManager>
 
     [Header("Fond")]
     public Image DarkFond;
-    private byte alphaC;
     public float TimeTransition;
     void Awake()
     {
         if (Instance != this)
             Destroy(this);
         cm = GetComponent<CameraManager>();
-        //anim = GetComponent<Animator>();
-        //anim.SetTrigger("Disappear");
+        anim = GetComponent<Animator>();
+        BandeDisAppear();
     }
 
     #region visual
     private void UpdateDark()
     {
-        //DarkFond.color = new Color32(255,255, 255, Mathf.Lerp(DarkFond.color.a, alphaC, TimeTransition));
-        //Mathf.Lerp(transform.localPosition.x, Target.position.x * aheadAmount + aheadAmountx, aheadspeed * Time.deltaTime)
+        //convert float to byte color.r = (byte) ((int) (Mathf.Lerp(appear.a, btt, TimeTransition)) % 256)
+
     }
     public void BandeAppear()
     {
-
+        anim.SetTrigger("Appear");
     }
     public void BandeDisAppear()
     {

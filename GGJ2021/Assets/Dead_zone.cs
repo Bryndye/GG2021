@@ -15,6 +15,7 @@ public class Dead_zone : MonoBehaviour
     public bool IndeadZone;
     float timer;
     [SerializeField] float timeMax;
+    bool done, doneA;
     private void Awake()
     {
         cm = CanvasManager.Instance;
@@ -46,12 +47,19 @@ public class Dead_zone : MonoBehaviour
         }
         if (transform.position.x < posXMin)
         {
-            cm.BandeAppear();
+            done = false;
             print("c le roussi");
             IndeadZone = true;
+            if (!doneA)
+            {
+                doneA = true;
+                cm.BandeAppear();
+            }
         }
-        else
+        else if(!done)
         {
+            done = true;
+            doneA = false;
             cm.BandeDisAppear();
             IndeadZone = false;
         }
