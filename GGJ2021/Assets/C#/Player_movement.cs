@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player_movement : MonoBehaviour
 {
+    public Transform spawn;
     public bool InCinematic;
 
     [Header("Components")]
@@ -15,7 +16,8 @@ public class Player_movement : MonoBehaviour
     [SerializeField] SpriteRenderer spritePlayer;
 
     [Header("Jump")]
-    [SerializeField] float forceJump;
+    [SerializeField] float forceJump = 600;
+    [SerializeField] float forceJumpHori = 40;
     private float hangtime = 0.2f;
     private float hangcounter;
 
@@ -49,6 +51,10 @@ public class Player_movement : MonoBehaviour
         if (!InCinematic)
         {
             Jump();
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                transform.position = spawn.position;
+            }
         }
     }
 
@@ -77,7 +83,8 @@ public class Player_movement : MonoBehaviour
         //jump
         if (Input.GetKeyDown(KeyCode.Z) && hangcounter > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, forceJump);
+            //rb.velocity = new Vector2(rb.velocity.x, forceJump);
+            rb.AddForce(new Vector2(rb.velocity.x , forceJump));
         }
     }
 

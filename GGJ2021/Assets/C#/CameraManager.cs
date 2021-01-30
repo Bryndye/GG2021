@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraManager : Singleton<CameraManager>
 {
     public Transform Target;
-    [SerializeField] float aheadAmount, aheadspeed, aheadAmounty;
+    [SerializeField] float aheadAmount, aheadspeed, aheadAmounty, aheadAmountx;
 
     void Update() => SmoothFollow();
 
@@ -13,7 +13,7 @@ public class CameraManager : Singleton<CameraManager>
     {
         if (Target != null)
         {
-            transform.localPosition = new Vector3(Mathf.Lerp(transform.localPosition.x, Target.position.x * aheadAmount, aheadspeed * Time.deltaTime)
+            transform.localPosition = new Vector3(Mathf.Lerp(transform.localPosition.x, Target.position.x * aheadAmount + aheadAmountx, aheadspeed * Time.deltaTime)
                 , Mathf.Lerp(transform.localPosition.y, Target.position.y + aheadAmounty, aheadspeed * Time.deltaTime)
                 , transform.localPosition.z);
         }
