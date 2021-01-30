@@ -343,9 +343,9 @@ GameObject:
   - component: {fileID: 366332826}
   - component: {fileID: 366332825}
   - component: {fileID: 366332824}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Magic
-  m_TagString: Untagged
+  m_TagString: Magic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
