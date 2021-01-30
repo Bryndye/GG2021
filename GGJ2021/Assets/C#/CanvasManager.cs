@@ -21,8 +21,9 @@ public class CanvasManager : Singleton<CanvasManager>
 
     [Header("Fond")]
     public Image DarkFond;
-    private byte alphaC;
     public float TimeTransition;
+    [SerializeField] Color32 appear;
+    [SerializeField] Color32 disappear;
     void Awake()
     {
         if (Instance != this)
@@ -44,7 +45,7 @@ public class CanvasManager : Singleton<CanvasManager>
     }
     public void BandeDisAppear()
     {
-        anim.SetTrigger("Disappear");
+        //anim.SetTrigger("Disappear");
     }
     #endregion
 

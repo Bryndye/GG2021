@@ -24,6 +24,7 @@ public class Player_movement : Singleton<Player_movement>
     float hangtime = 0.2f;
     float hangcounter;
     bool jumped;
+    bool jumpedANim;
 
     [Header("OnGround")]
     [SerializeField] bool atterir;
@@ -69,7 +70,7 @@ public class Player_movement : Singleton<Player_movement>
         if (!onGround)
         {
             atterir = false;
-            if (!jumped)
+            if (!jumpedANim)
             {
                 Anim_Player.SetTrigger("Fall");
             }
@@ -131,12 +132,18 @@ public class Player_movement : Singleton<Player_movement>
             Anim_Player.SetTrigger("ChangeMove");
             rb.AddForce(new Vector2(rb.velocity.x , forceJump));
             jumped = true;
+            jumpedANim = true;
             Invoke(nameof(Jumped), 0.2f);
         }
     }
     public void Jumped()
     {
         jumped = false;
+        Invoke(nameof(endanimJump), 0.3f);
+    }
+    private void endanimJump()
+    {
+        jumpedANim = false;
     }
 
     private bool CheckGround()
