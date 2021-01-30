@@ -46,7 +46,7 @@ public class Player_movement : MonoBehaviour
 
     private void Movement()
     {
-        if (Input.GetAxisRaw("Horizontal") != 0)
+        if (Input.GetAxisRaw("Horizontal") != 0 && onGround)
         {
             rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, 0);
 
@@ -59,6 +59,8 @@ public class Player_movement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) && onGround)
         {
+            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, 0);
+
             rb.AddForce(forceJump);
         }
     }
@@ -66,7 +68,6 @@ public class Player_movement : MonoBehaviour
     private bool CheckGround()
     {
         float extraHeight = 0.05f;
-        //RaycastHit2D hit = Physics2D.Raycast(cc.bounds.center, Vector2.down, cc.bounds.extents.y + extraHeight);
         RaycastHit2D hit = Physics2D.CircleCast(cc.bounds.center - new Vector3(0,0.65f,0), 0.4f, Vector2.down, 0.01f, layerGround);
 
         Debug.DrawRay(cc.bounds.center, Vector2.down * (cc.bounds.extents.y + extraHeight));

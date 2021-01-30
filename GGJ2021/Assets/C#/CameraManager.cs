@@ -12,8 +12,8 @@ public class CameraManager : Singleton<CameraManager>
     {
         if (Target != null)
         {
-            Vector3 smooth = new Vector3(Target.position.x, 1, Target.position.z) - transform.position;
-            transform.position += smooth / 40;
+            Vector3 smooth = new Vector3(Target.position.x, Target.position.y, -10) - transform.position;
+            transform.position += smooth / 100;
         }
     }
 
@@ -21,7 +21,7 @@ public class CameraManager : Singleton<CameraManager>
     {
         if (Instance != this)
             Destroy(this);
-        audioS = GetComponent<AudioSource>();
+        //audioS = GetComponent<AudioSource>();
     }
 
     #region Sound
@@ -61,6 +61,6 @@ public class CameraManager : Singleton<CameraManager>
 
     private void FixedUpdate()
     {
-        AudioPlaying();
+       // AudioPlaying();
     }
 }
