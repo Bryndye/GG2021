@@ -26,18 +26,15 @@ public class Player_movement : Singleton<Player_movement>
     bool jumped;
 
     [Header("OnGround")]
+    [SerializeField] bool atterir;
     [SerializeField] bool onGround;
     [SerializeField] LayerMask layerGround;
     [SerializeField] Transform groundCheckPoint, groundCheckPoint2;
-
-    [Header("Souvenirs")]
-    [SerializeField] Transform spawnSouv;
 
     private void Awake()
     {
         if (Instance != this)
             Destroy(this);
-
         cc = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         CanMove = true;
@@ -60,13 +57,30 @@ public class Player_movement : Singleton<Player_movement>
             {
                 transform.position = spawn.position;
             }
+            if (Input.GetKeyDown(KeyCode.F) && onGround && CanMove && canInteract)
+            {
+                CanMove = false;
+                Anim_Player.SetTrigger("Interact");
+                print("kk");
+            }
         }
+        if (!onGround)
+        {
+            atterir = false;
+            if (!jumped)
+            {
+                Anim_Player.SetTrigger("Fall");
+            }
+        }
+        CheckOnGroundFirst();
     }
 
     private void Movement()
     {
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
+            Anim_Player.SetBool("isMoving", true);
+            Anim_Player.SetTrigger("ChangeMove");
             if (!onGround)
             {
                 rb.velocity += new Vector2(Input.GetAxisRaw("Horizontal") * Time.deltaTime * airControl * 100, 0);
@@ -85,6 +99,11 @@ public class Player_movement : Singleton<Player_movement>
             }
             //print(rb.velocity.x);
             spritePlayer.transform.localScale = new Vector3(Input.GetAxisRaw("Horizontal"), 1, 1);
+        }
+        else
+        {
+            Anim_Player.SetBool("isMoving", false);
+            Anim_Player.SetTrigger("ChangeMove");
         }
     }
 
@@ -105,6 +124,9 @@ public class Player_movement : Singleton<Player_movement>
         if (Input.GetKeyDown(KeyCode.Z) && hangcounter > 0 && !jumped)
         {
             //rb.velocity = new Vector2(rb.velocity.x, forceJump);
+
+            Anim_Player.SetTrigger("Jump");
+            Anim_Player.SetTrigger("ChangeMove");
             rb.AddForce(new Vector2(rb.velocity.x , forceJump));
             jumped = true;
             Invoke(nameof(Jumped), 0.2f);
@@ -119,24 +141,48 @@ public class Player_movement : Singleton<Player_movement>
     {
         return Physics2D.OverlapCircle(groundCheckPoint.position, 0.1f, layerGround) || Physics2D.OverlapCircle(groundCheckPoint2.position, 0.1f, layerGround);
     }
+    private void CheckOnGroundFirst()
+    {
+        if (onGround && !atterir)
+        {
+            atterir = true;
+            Anim_Player.SetTrigger("Land");
+        }
+    }
     #endregion
 
+
+    #region VentSouvenir
+    public Event_souvenirs es;
+    bool canInteract;
     public void Deposer()
     {
         CanMove = true;
     }
+    public void CallEvent()
+    {
+        es.SendSouvenir(this);
+        Deposer();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Event_souvenirs es = collision.GetComponent<Event_souvenirs>();
-        if (es != null)
+        if (collision.CompareTag("Souvenir"))
         {
-            if (Input.GetKeyDown(KeyCode.F) && onGround && CanMove)
+            es = collision.GetComponent<Event_souvenirs>();
+            if (es != null)
             {
-                CanMove = false;
-                //Anim deposer + anim event depose
-                es.SendSouvenir(this);
+                canInteract = true;
             }
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Souvenir"))
+        {
+            canInteract = false;
+        }
+    }
+    #endregion
 }
