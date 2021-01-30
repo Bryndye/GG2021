@@ -6,6 +6,8 @@ public class Event_souvenirs : MonoBehaviour
 {
     public int Index;
     public int IndexMax;
+    [SerializeField] Transform spawnSouv;
+
     [Header("Activate")]
     [SerializeField] GameObject[] someThings;
 
@@ -22,13 +24,11 @@ public class Event_souvenirs : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void SendSouvenir(Player_movement pm)
     {
-        if (collision.CompareTag("Magic"))
-        {
-            Index++;
-            print(Index);
-        }
+        Index++;
+        print(Index);
+        Instantiate(Resources.Load<GameObject>("Particle_souvenir"), spawnSouv.position, Quaternion.identity);
     }
 
     private void Update()

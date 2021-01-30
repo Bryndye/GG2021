@@ -56,7 +56,6 @@ public class Player_movement : Singleton<Player_movement>
         if (!InCinematic && CanMove)
         {
             Jump();
-            DeposerSouvManage();
             if (Input.GetKeyDown(KeyCode.W))
             {
                 transform.position = spawn.position;
@@ -122,18 +121,22 @@ public class Player_movement : Singleton<Player_movement>
     }
     #endregion
 
-    private void DeposerSouvManage()
-    {
-        if (Input.GetKeyDown(KeyCode.F) && onGround)
-        {
-            CanMove = false;
-            //Anim deposer + anim event depose
-            Deposer();
-        }
-    }
     public void Deposer()
     {
-        Instantiate(Resources.Load<GameObject>("Particle_souvenir"),spawnSouv.position, Quaternion.identity);
         CanMove = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Event_souvenirs es = collision.GetComponent<Event_souvenirs>();
+        if (es != null)
+        {
+            if (Input.GetKeyDown(KeyCode.F) && onGround && CanMove)
+            {
+                CanMove = false;
+                //Anim deposer + anim event depose
+                es.SendSouvenir(this);
+            }
+        }
     }
 }

@@ -658,7 +658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1788453226}
   m_Layer: 0
-  m_Name: Spawn
+  m_Name: SpawnParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

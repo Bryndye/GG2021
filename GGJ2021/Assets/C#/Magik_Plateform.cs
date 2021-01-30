@@ -5,10 +5,9 @@ using UnityEngine;
 public class Magik_Plateform : MonoBehaviour
 {
     BoxCollider2D b;
-    SpriteRenderer sr;
+    SpriteRenderer[] sr;
     private void Awake() { 
         b = GetComponent<BoxCollider2D>();
-        sr = GetComponent<SpriteRenderer>();
         Desactive();
     }
 
@@ -16,7 +15,14 @@ public class Magik_Plateform : MonoBehaviour
     {
         if (b.isTrigger)
         {
-            sr.color = new Color32(255, 255, 255, 255);
+            if (sr.Length > 0)
+            {
+                for (int i = 0; i < sr.Length; i++)
+                {
+                    sr[i].color = new Color32(255, 255, 255, 255);
+                }
+            }
+
             b.isTrigger = false;
             Invoke(nameof(Desactive), t);
         }
@@ -24,7 +30,14 @@ public class Magik_Plateform : MonoBehaviour
 
     private void Desactive()
     {
-        sr.color = new Color32(255,255,255, 150);
+        if (sr.Length >0)
+        {
+            for (int i = 0; i < sr.Length; i++)
+            {
+                sr[i].color = new Color32(255, 255, 255, 150);
+            }
+        }
+
         b.isTrigger = true;
     }
 }
