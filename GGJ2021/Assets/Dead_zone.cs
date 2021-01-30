@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class Dead_zone : MonoBehaviour
 {
     CanvasManager cm;
     Player_movement pm;
+    SpawnManager sm;
 
     [SerializeField] float rangeBetween = 10;
     [SerializeField] float posXMin;
@@ -20,21 +22,25 @@ public class Dead_zone : MonoBehaviour
     {
         cm = CanvasManager.Instance;
         pm = Player_movement.Instance;
+        sm = SpawnManager.Instance;
         posXMax = transform.position.x;
     }
 
     private void Update()
     {
         CheckPos();
-
         if (IndeadZone)
         {
             timer += Time.deltaTime;
             if (timer >= timeMax)
             {
-                print("the end");
-                pm.InCinematic = true;
+                sm.Respawn();
+                timer = 0;
             }
+        }
+        else
+        {
+            timer = 0;
         }
     }
 
@@ -48,7 +54,6 @@ public class Dead_zone : MonoBehaviour
         if (transform.position.x < posXMin)
         {
             done = false;
-            print("c le roussi");
             IndeadZone = true;
             if (!doneA)
             {

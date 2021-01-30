@@ -7,7 +7,7 @@ public class CanvasManager : Singleton<CanvasManager>
 {
     //[SerializeField] Button bt_continue;
     CameraManager cm;
-    Animator anim;
+    public Animator anim;
 
     [Header("Dialogues")]
     public Text dialogueHere;
@@ -26,6 +26,7 @@ public class CanvasManager : Singleton<CanvasManager>
     {
         if (Instance != this)
             Destroy(this);
+
         cm = GetComponent<CameraManager>();
         anim = GetComponent<Animator>();
         BandeDisAppear();

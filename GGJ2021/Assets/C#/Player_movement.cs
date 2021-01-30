@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player_movement : Singleton<Player_movement>
 {
-    public Transform spawn;
     public bool InCinematic = false;
     public bool CanMove = true;
 
@@ -57,10 +56,6 @@ public class Player_movement : Singleton<Player_movement>
         if (!InCinematic && CanMove)
         {
             Jump();
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                transform.position = spawn.position;
-            }
             if (Input.GetKeyDown(KeyCode.F) && onGround && CanMove && canInteract)
             {
                 if (es != null && es.Index < es.IndexMax)
