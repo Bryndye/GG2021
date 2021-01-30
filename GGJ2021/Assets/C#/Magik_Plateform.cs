@@ -22,8 +22,8 @@ public class Magik_Plateform : MonoBehaviour
                     sr[i].color = new Color32(255, 255, 255, 255);
                 }
             }
-
             b.isTrigger = false;
+            b.enabled = false;
             Invoke(nameof(Desactive), t);
         }
     }
@@ -37,7 +37,7 @@ public class Magik_Plateform : MonoBehaviour
                 sr[i].color = new Color32(255, 255, 255, 150);
             }
         }
-
         b.isTrigger = true;
+        b.enabled = true;
     }
 }

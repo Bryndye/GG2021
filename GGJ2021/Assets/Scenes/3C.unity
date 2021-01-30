@@ -6122,6 +6122,10 @@ PrefabInstance:
       propertyPath: latence
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4365946459515805665, guid: 7b214726d4629ef41aefff7c5908e3c6, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b214726d4629ef41aefff7c5908e3c6, type: 3}
 --- !u!1001 &775779713205434186
@@ -6252,10 +6256,6 @@ PrefabInstance:
       propertyPath: spawn
       value: 
       objectReference: {fileID: 1697123970}
-    - target: {fileID: 1378695423168325683, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
-      propertyPath: layerGround.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 1378695423168325685, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
       propertyPath: m_Name
       value: Player

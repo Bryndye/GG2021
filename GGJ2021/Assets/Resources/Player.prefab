@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 1378695423168325680}
   - component: {fileID: 1378695423168325683}
   - component: {fileID: 111674213}
+  - component: {fileID: 7286517943529168036}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -232,7 +233,7 @@ MonoBehaviour:
   onGround: 0
   layerGround:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 512
   groundCheckPoint: {fileID: 132038234}
   groundCheckPoint2: {fileID: 0}
   es: {fileID: 0}
@@ -250,6 +251,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light_mouse: {fileID: 0}
   timeActivate: 3
+--- !u!114 &7286517943529168036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378695423168325685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f59c6b82dad22a4b81f45b4cf02c37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeBetween: 10
+  posXMin: 0
+  posXMax: 0
+  IndeadZone: 0
+  timeMax: 5
 --- !u!1 &1378695423674992663
 GameObject:
   m_ObjectHideFlags: 0

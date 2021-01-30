@@ -27,7 +27,6 @@ public class Event_souvenirs : MonoBehaviour
     public void SendSouvenir(Player_movement pm)
     {
         Index++;
-        print(Index);
         Instantiate(Resources.Load<GameObject>("Particle_souvenir"), spawnSouv.position, Quaternion.identity);
     }
 

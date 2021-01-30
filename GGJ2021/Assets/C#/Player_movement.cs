@@ -63,7 +63,6 @@ public class Player_movement : Singleton<Player_movement>
                 {
                     CanMove = false;
                     Anim_Player.SetTrigger("Interact");
-                    print("kk");
                 }
             }
         }
@@ -164,7 +163,6 @@ public class Player_movement : Singleton<Player_movement>
     public void CallEvent()
     {
         es.SendSouvenir(this);
-        Deposer();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -8,6 +8,8 @@ public class CanvasManager : Singleton<CanvasManager>
     //[SerializeField] Button bt_continue;
     CameraManager cm;
     Animator anim;
+
+    [Header("Dialogues")]
     public Text dialogueHere;
     private bool skip;
     private int index =0;
@@ -17,6 +19,10 @@ public class CanvasManager : Singleton<CanvasManager>
     [SerializeField] AudioClip[] acStock;
     private bool isRuntime;
 
+    [Header("Fond")]
+    public Image DarkFond;
+    private byte alphaC;
+    public float TimeTransition;
     void Awake()
     {
         if (Instance != this)
@@ -27,13 +33,18 @@ public class CanvasManager : Singleton<CanvasManager>
     }
 
     #region visual
+    private void UpdateDark()
+    {
+        //DarkFond.color = new Color32(255,255, 255, Mathf.Lerp(DarkFond.color.a, alphaC, TimeTransition));
+        //Mathf.Lerp(transform.localPosition.x, Target.position.x * aheadAmount + aheadAmountx, aheadspeed * Time.deltaTime)
+    }
     public void BandeAppear()
     {
-        //anim.SetTrigger("Appear");
+
     }
     public void BandeDisAppear()
     {
-        //anim.SetTrigger("Disappear");
+        anim.SetTrigger("Disappear");
     }
     #endregion
 
@@ -118,5 +129,6 @@ public class CanvasManager : Singleton<CanvasManager>
             skip = true;
             Invoke(nameof(NextDialogue), 2f);
         }
+        UpdateDark();
     }
 }
