@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 111674213}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,8 +221,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 0}
   InCinematic: 0
-  speed: 200
+  speed: 3.5
+  acceleration: 200
   spritePlayer: {fileID: 1378695423674992658}
+  airControl: 0.1
   forceJump: 400
   forceJumpHori: 40
   jumpBufferLenght: 0.1

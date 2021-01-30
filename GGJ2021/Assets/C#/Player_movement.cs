@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_movement : MonoBehaviour
+public class Player_movement : Singleton<Player_movement>
 {
     public Transform spawn;
     public bool InCinematic;
@@ -12,17 +12,16 @@ public class Player_movement : MonoBehaviour
     private Rigidbody2D rb;
 
     [Header("Movement")]
-    [SerializeField][Range(0, 200)] float speed;
+    [SerializeField] [Range(0, 5)] float speed;
+    [SerializeField][Range(0, 200)] float acceleration;
     [SerializeField] SpriteRenderer spritePlayer;
 
     [Header("Jump")]
-    [SerializeField] float forceJump = 600;
-    [SerializeField] float forceJumpHori = 40;
-    private float hangtime = 0.2f;
-    private float hangcounter;
-
-    [SerializeField] float jumpBufferLenght = 0.1f;
-    [SerializeField] float jumpBufferCount;
+    [SerializeField] [Range(0, 1)] float airControl = 0.5f;
+    [SerializeField] float forceJump = 400;
+    float hangtime = 0.2f;
+    float hangcounter;
+    bool jumped;
 
     [Header("OnGround")]
     [SerializeField] bool onGround;
@@ -31,6 +30,9 @@ public class Player_movement : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != this)
+            Destroy(this);
+
         cc = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -39,10 +41,7 @@ public class Player_movement : MonoBehaviour
     {
         if (!InCinematic)
         {
-            if (onGround)
-            {
-                Movement();
-            }
+            Movement();
         }
     }
     private void Update()
@@ -60,10 +59,25 @@ public class Player_movement : MonoBehaviour
 
     private void Movement()
     {
-        if (Input.GetAxisRaw("Horizontal") != 0 && onGround)
+        if (Input.GetAxisRaw("Horizontal") != 0)
         {
-            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, rb.velocity.y);
-
+            if (!onGround)
+            {
+                rb.velocity += new Vector2(Input.GetAxisRaw("Horizontal") * Time.deltaTime * airControl * 100, 0);
+            }
+            else
+            {
+                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * Time.deltaTime * acceleration, rb.velocity.y);
+            }
+            if (rb.velocity.x > speed)
+            {
+                rb.velocity = new Vector2(speed, rb.velocity.y);
+            }
+            if (rb.velocity.x < -speed)
+            {
+                rb.velocity = new Vector2(-speed, rb.velocity.y);
+            }
+            //print(rb.velocity.x);
             spritePlayer.transform.localScale = new Vector3(Input.GetAxisRaw("Horizontal"), 1, 1);
         }
     }
@@ -81,11 +95,17 @@ public class Player_movement : MonoBehaviour
         }
 
         //jump
-        if (Input.GetKeyDown(KeyCode.Z) && hangcounter > 0)
+        if (Input.GetKeyDown(KeyCode.Z) && hangcounter > 0 && !jumped)
         {
             //rb.velocity = new Vector2(rb.velocity.x, forceJump);
             rb.AddForce(new Vector2(rb.velocity.x , forceJump));
+            jumped = true;
+            Invoke(nameof(Jumped), 0.2f);
         }
+    }
+    public void Jumped()
+    {
+        jumped = false;
     }
 
     private bool CheckGround()

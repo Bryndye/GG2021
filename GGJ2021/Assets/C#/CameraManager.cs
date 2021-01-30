@@ -7,7 +7,12 @@ public class CameraManager : Singleton<CameraManager>
     public Transform Target;
     [SerializeField] float aheadAmount, aheadspeed, aheadAmounty, aheadAmountx;
 
-    void Update() => SmoothFollow();
+    [Header("Audio Sources")]
+    public AudioSource AS_dia;
+    public AudioSource AS_whisper;
+    public AudioSource AS_music;
+
+    void FixedUpdate() => SmoothFollow();
 
     void SmoothFollow()
     {
@@ -60,9 +65,4 @@ public class CameraManager : Singleton<CameraManager>
     }
 
     #endregion
-
-    private void FixedUpdate()
-    {
-       // AudioPlaying();
-    }
 }

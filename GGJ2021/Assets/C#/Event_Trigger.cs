@@ -5,48 +5,82 @@ using UnityEngine;
 
 public class Event_Trigger : MonoBehaviour
 {
-    //CanvasManager cm;
-    CameraManager camM;
+    public enum TypeEvent
+    {
+        Dialogue,
+        Cinematic,
+        Femme
+    }
+    public TypeEvent Type;
+    CanvasManager cm;
+    Player_movement pm;
     [SerializeField] string nameEvent;
-    private bool done = false;
+    public bool done = false;
 
     [Header("Dialogues")]
      public string[] dialogues;
-     public AudioClip audioC;
+     public AudioClip[] audioC;
+
+    [Header("Cinematique")]
+    public float TimeRun;
+    public float TimeCinematic;
+
+    [Header("Femme")]
+    public Animator Anim_Femme;
 
     private void Awake()
     {
-        camM = CameraManager.Instance;
-
+        cm = CanvasManager.Instance;
+        pm = Player_movement.Instance;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Player") && !done)
+        if (collision.CompareTag("Player") && !done)
         {
-            EventAudio();
-            EventDialogue();
-
+            switch (Type)
+            {
+                case TypeEvent.Dialogue:
+                    EventDialogue();
+                    break;
+                case TypeEvent.Cinematic:
+                    Cinematique();
+                    break;
+                case TypeEvent.Femme:
+                    Femme();
+                    break;
+                default:
+                    break;
+            }
             done = true;
-        }
-    }
-
-    private void EventAudio()
-    {
-        if (audioC)
-        {
-            //Debug.Log(camM + " Manager Cam  " + audioC);
-            camM.LaunchSound(audioC);
         }
     }
 
     private void EventDialogue()
     {
-        /*
+       
         if (cm.dialogueHere && dialogues.Length > 0)
         {
-            cm.StartDiaEffect(dialogues);
-        }*/
+            cm.StartDiaEffect(dialogues, audioC);
+        }
+    }
+
+    private void Cinematique()
+    {
+        pm.InCinematic = true;
+        Invoke(nameof(EndCinematic),  TimeCinematic);
+    }
+    private void EndCinematic()
+    {
+        pm.InCinematic = false;
+    }
+
+    private void Femme()
+    {
+        if (Anim_Femme != null)
+        {
+            //play anim disappear
+        }
     }
 
     #region EditMoi
