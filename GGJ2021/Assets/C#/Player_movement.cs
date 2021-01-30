@@ -12,12 +12,20 @@ public class Player_movement : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField][Range(0, 200)] float speed;
-    [SerializeField] Vector2 forceJump;
     [SerializeField] SpriteRenderer spritePlayer;
+
+    [Header("Jump")]
+    [SerializeField] float forceJump;
+    private float hangtime = 0.2f;
+    private float hangcounter;
+
+    [SerializeField] float jumpBufferLenght = 0.1f;
+    [SerializeField] float jumpBufferCount;
 
     [Header("OnGround")]
     [SerializeField] bool onGround;
     [SerializeField] LayerMask layerGround;
+    [SerializeField] Transform groundCheckPoint, groundCheckPoint2;
 
     private void Awake()
     {
@@ -48,39 +56,33 @@ public class Player_movement : MonoBehaviour
     {
         if (Input.GetAxisRaw("Horizontal") != 0 && onGround)
         {
-            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, 0);
+            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, rb.velocity.y);
 
             spritePlayer.transform.localScale = new Vector3(Input.GetAxisRaw("Horizontal"), 1, 1);
         }
-        //print(rb.velocity.x);
     }
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && onGround)
+        //manager hangtime before jump
+        if (onGround)
         {
-            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed, 0);
+            hangcounter = hangtime;
+        }
+        else
+        {
+            hangcounter -= Time.deltaTime;
+        }
 
-            rb.AddForce(forceJump);
+        //jump
+        if (Input.GetKeyDown(KeyCode.Z) && hangcounter > 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, forceJump);
         }
     }
 
     private bool CheckGround()
     {
-        float extraHeight = 0.05f;
-        RaycastHit2D hit = Physics2D.CircleCast(cc.bounds.center - new Vector3(0,0.65f,0), 0.4f, Vector2.down, 0.01f, layerGround);
-
-        Debug.DrawRay(cc.bounds.center, Vector2.down * (cc.bounds.extents.y + extraHeight));
-
-        if (hit.collider != null)
-        {
-            // && hit.collider.gameObject.layer == layerGround
-            print("bouh" + hit.collider.name);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return Physics2D.OverlapCircle(groundCheckPoint.position, 0.1f, layerGround) || Physics2D.OverlapCircle(groundCheckPoint2.position, 0.1f, layerGround);
     }
 }
