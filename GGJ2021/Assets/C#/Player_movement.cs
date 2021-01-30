@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player_movement : Singleton<Player_movement>
 {
     public Transform spawn;
-    public bool InCinematic;
+    public bool InCinematic = false;
+    public bool CanMove = true;
 
     [Header("Components")]
     private CapsuleCollider2D cc;
@@ -29,6 +30,9 @@ public class Player_movement : Singleton<Player_movement>
     [SerializeField] LayerMask layerGround;
     [SerializeField] Transform groundCheckPoint, groundCheckPoint2;
 
+    [Header("Souvenirs")]
+    [SerializeField] Transform spawnSouv;
+
     private void Awake()
     {
         if (Instance != this)
@@ -36,11 +40,12 @@ public class Player_movement : Singleton<Player_movement>
 
         cc = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        CanMove = true;
     }
 
     private void FixedUpdate()
     {
-        if (!InCinematic)
+        if (!InCinematic && CanMove)
         {
             Movement();
         }
@@ -48,9 +53,10 @@ public class Player_movement : Singleton<Player_movement>
     private void Update()
     {
         onGround = CheckGround();
-        if (!InCinematic)
+        if (!InCinematic && CanMove)
         {
             Jump();
+            DeposerSouvManage();
             if (Input.GetKeyDown(KeyCode.W))
             {
                 transform.position = spawn.position;
@@ -78,12 +84,12 @@ public class Player_movement : Singleton<Player_movement>
             {
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
             }
-            print("gaemplay");
             //print(rb.velocity.x);
             spritePlayer.transform.localScale = new Vector3(Input.GetAxisRaw("Horizontal"), 1, 1);
         }
     }
 
+    #region JUMP
     private void Jump()
     {
         //manager hangtime before jump
@@ -113,5 +119,21 @@ public class Player_movement : Singleton<Player_movement>
     private bool CheckGround()
     {
         return Physics2D.OverlapCircle(groundCheckPoint.position, 0.1f, layerGround) || Physics2D.OverlapCircle(groundCheckPoint2.position, 0.1f, layerGround);
+    }
+    #endregion
+
+    private void DeposerSouvManage()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && onGround)
+        {
+            CanMove = false;
+            //Anim deposer + anim event depose
+            Deposer();
+        }
+    }
+    public void Deposer()
+    {
+        Instantiate(Resources.Load<GameObject>("Particle_souvenir"),spawnSouv.position, Quaternion.identity);
+        CanMove = true;
     }
 }
