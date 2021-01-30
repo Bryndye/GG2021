@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AppearPlateform : MonoBehaviour
 {
-    [SerializeField] LayerMask layerMagicGround;
     [SerializeField] Transform light_mouse;
 
     [SerializeField] float timeActivate = 2;
