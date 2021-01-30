@@ -59,9 +59,12 @@ public class Player_movement : Singleton<Player_movement>
             }
             if (Input.GetKeyDown(KeyCode.F) && onGround && CanMove && canInteract)
             {
-                CanMove = false;
-                Anim_Player.SetTrigger("Interact");
-                print("kk");
+                if (es != null && es.Index < es.IndexMax)
+                {
+                    CanMove = false;
+                    Anim_Player.SetTrigger("Interact");
+                    print("kk");
+                }
             }
         }
         if (!onGround)
@@ -169,10 +172,7 @@ public class Player_movement : Singleton<Player_movement>
         if (collision.CompareTag("Souvenir"))
         {
             es = collision.GetComponent<Event_souvenirs>();
-            if (es != null && es.Index < es.IndexMax)
-            {
-                canInteract = true;
-            }
+            canInteract = true;
         }
     }
 
