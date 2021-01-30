@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 497455972}
   - component: {fileID: 497455971}
   m_Layer: 0
-  m_Name: Evt Test
+  m_Name: Evt Cinematic test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
-  nameEvent: Test
+  nameEvent: Cinematic test
   done: 0
   dialogues:
   - "Je suis plut\xF4t beau mais je trouve que jules et elena irait tr\xE8s bien
@@ -432,7 +432,7 @@ MonoBehaviour:
   - 1 dialo
   - 2 dialo
   audioC: []
-  TimeRun: 0
+  TimeRun: 3
   TimeCinematic: 5
   Anim_Femme: {fileID: 0}
 --- !u!61 &497455972
@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 1016581023}
   - component: {fileID: 1016581022}
   m_Layer: 0
-  m_Name: Evt Test
+  m_Name: Evt nameExemple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  nameEvent: Test
+  nameEvent: nameExemple
   done: 0
   dialogues:
   - "Je suis plut\xF4t beau mais je trouve que jules et elena irait tr\xE8s bien
@@ -576,8 +576,8 @@ MonoBehaviour:
   - 1 dialo
   - 2 dialo
   audioC: []
-  TimeRun: 0
-  TimeCinematic: 0
+  TimeRun: 15
+  TimeCinematic: 30
   Anim_Femme: {fileID: 0}
 --- !u!61 &1016581023
 BoxCollider2D:

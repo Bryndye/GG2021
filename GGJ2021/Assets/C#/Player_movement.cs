@@ -9,12 +9,13 @@ public class Player_movement : Singleton<Player_movement>
 
     [Header("Components")]
     private CapsuleCollider2D cc;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     [Header("Movement")]
-    [SerializeField] [Range(0, 5)] float speed;
+    [Range(0, 5)] public float speed;
     [SerializeField][Range(0, 200)] float acceleration;
     [SerializeField] SpriteRenderer spritePlayer;
+    public Animator Anim_Player;
 
     [Header("Jump")]
     [SerializeField] [Range(0, 1)] float airControl = 0.5f;
@@ -77,6 +78,7 @@ public class Player_movement : Singleton<Player_movement>
             {
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
             }
+            print("gaemplay");
             //print(rb.velocity.x);
             spritePlayer.transform.localScale = new Vector3(Input.GetAxisRaw("Horizontal"), 1, 1);
         }
