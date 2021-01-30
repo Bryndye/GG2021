@@ -10,11 +10,11 @@ public class Player_movement : Singleton<Player_movement>
 
     [Header("Components")]
     private CapsuleCollider2D cc;
-    public Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
 
     [Header("Movement")]
-    [Range(0, 5)] public float speed;
-    [SerializeField][Range(0, 200)] float acceleration;
+    public float speed;
+    [SerializeField] float acceleration;
     [SerializeField] SpriteRenderer spritePlayer;
     public Animator Anim_Player;
 

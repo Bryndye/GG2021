@@ -209,7 +209,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1378695423168325685}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6028aa665ca60794c92c9f2e7e7305cb, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -229,9 +229,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -252,13 +252,13 @@ MonoBehaviour:
   spawn: {fileID: 0}
   InCinematic: 0
   CanMove: 1
-  rb: {fileID: 0}
-  speed: 3.5
-  acceleration: 200
+  rb: {fileID: 1378695423168325680}
+  speed: 5
+  acceleration: 1000
   spritePlayer: {fileID: 1378695423674992658}
   Anim_Player: {fileID: 1378695423674992661}
-  airControl: 0.1
-  forceJump: 400
+  airControl: 0.3
+  forceJump: 1200
   atterir: 0
   onGround: 0
   layerGround:
@@ -266,6 +266,7 @@ MonoBehaviour:
     m_Bits: 1536
   groundCheckPoint: {fileID: 132038234}
   groundCheckPoint2: {fileID: 1330020057}
+  es: {fileID: 0}
 --- !u!114 &111674213
 MonoBehaviour:
   m_ObjectHideFlags: 0
