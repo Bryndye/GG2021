@@ -75,12 +75,10 @@ public class Event_Trigger : MonoBehaviour
         if (Type == TypeEvent.Cinematic && done && pm.InCinematic)
         {
             pm.rb.velocity = new Vector2(pm.speed + 1, pm.rb.velocity.y);
-            //print(pm.speed + "  " + pm.rb.velocity.x);
         }
         if (Type == TypeEvent.Cinematic && done && endRunning)
         {
             pm.rb.velocity = new Vector2(0, pm.rb.velocity.y);
-            print(pm.rb.velocity.x);
         }
     }
     private void Cinematique()
@@ -94,12 +92,12 @@ public class Event_Trigger : MonoBehaviour
     private void EndRun()
     {
         endRunning = true;
-        print("end run");
+        //print("end run");
     }
     private void EndCinematic()
     {
         pm.InCinematic = false;
-        print("end cine");
+        //print("end cine");
         Destroy(gameObject);
     }
     #endregion
