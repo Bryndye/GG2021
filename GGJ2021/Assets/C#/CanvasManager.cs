@@ -70,7 +70,7 @@ public class CanvasManager : Singleton<CanvasManager>
         {
             cm.AS_dia.clip = audioc[index];
             cm.AS_dia.Play();
-            print("audio launch");
+            //print("audio launch");
         }
     }
 

@@ -292,7 +292,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: a015ebf34e0b9964b9287a4b168af1d7, type: 3}
     m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
@@ -956,26 +956,26 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Programmer/ Narratif Design
+  m_Text: 'Programmer/ Narratif Designer
 
     CLUZEL Hugo
 
 
 
-    Artist 2D/ Sound Design
+    Artist 2D/ Sound
+    Designer/ Voice Actor
 
-    ROUAULT
-    Jules
-
-
-
-    Level Designer/ Narratif Design
-
-    ANDRIKIAN Elena
+    ROUAULT Jules
 
 
-    Voice
-    Actress
+
+    Level Designer/ Narratif Designer
+
+    ANDRIKIAN
+    Elena
+
+
+    Voice Actress
 
     Thanks to RATIE Manon'
 --- !u!1 &7420206573273587421
