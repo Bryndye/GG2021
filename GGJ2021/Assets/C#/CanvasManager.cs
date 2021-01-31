@@ -9,6 +9,7 @@ public class CanvasManager : Singleton<CanvasManager>
     CameraManager cm;
     public Animator anim;
     public GameObject Ending;
+    public GameObject PressF;
 
     [Header("Dialogues")]
     public Text dialogueHere;

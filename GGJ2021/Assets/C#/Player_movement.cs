@@ -39,6 +39,7 @@ public class Player_movement : Singleton<Player_movement>
             Destroy(this);
         cc = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        cm = CanvasManager.Instance;
         CanMove = true;
     }
 
@@ -223,6 +224,7 @@ public class Player_movement : Singleton<Player_movement>
 
     #region VentSouvenir
     public Event_souvenirs es;
+    CanvasManager cm;
     bool canInteract;
     public void Deposer()
     {
@@ -238,14 +240,32 @@ public class Player_movement : Singleton<Player_movement>
         if (collision.CompareTag("Souvenir"))
         {
             es = collision.GetComponent<Event_souvenirs>();
+            if (es.Index < es.IndexMax)
+            {
+                cm.PressF.SetActive(true);
+            }
             canInteract = true;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Souvenir") && es.Index < es.IndexMax)
+        {
+            cm.PressF.SetActive(true);
+        }
+        else
+        {
+            cm.PressF.SetActive(false);
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Souvenir"))
         {
+            cm.PressF.SetActive(false);
             canInteract = false;
         }
     }
