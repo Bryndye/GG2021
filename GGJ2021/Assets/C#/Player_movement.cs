@@ -35,6 +35,7 @@ public class Player_movement : Singleton<Player_movement>
 
     private void Awake()
     {
+        Time.timeScale = 1f;
         if (Instance != this)
             Destroy(this);
         cc = GetComponent<CapsuleCollider2D>();
