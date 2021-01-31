@@ -27,10 +27,12 @@ public class CanvasManager : Singleton<CanvasManager>
     public float TimeTransition;
     void Awake()
     {
-        /*if (Instance != this)
+        
+        if (Instance != this)
         {
-            Destroy(gameObject);
-        }*/
+            print("detrui moi");
+            Destroy(Instance);
+        }
 
         cm = CameraManager.Instance;
         anim = GetComponent<Animator>();

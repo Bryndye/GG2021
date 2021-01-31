@@ -15,6 +15,10 @@ public class AppearPlateform : MonoBehaviour
     }
     private void Update()
     {
+        if (cm == null)
+        {
+            cm = CanvasManager.Instance;
+        }
         CheckLayer();
         light_mouse.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
             Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);

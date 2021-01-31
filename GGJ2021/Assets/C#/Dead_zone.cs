@@ -74,7 +74,7 @@ public class Dead_zone : Singleton<Dead_zone>
         {
             done = true;
             doneA = false;
-            print(cm);
+            print(cm + cm.gameObject.name);
             cm.BandeDisAppear();
             IndeadZone = false;
         }
