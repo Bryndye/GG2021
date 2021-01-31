@@ -38,6 +38,10 @@ public class Event_souvenirs : MonoBehaviour
             {
                 someThings[i].SetActive(true);
             }
+            if (PorteEnd)
+            {
+                sr.GetComponent<BoxCollider2D>().isTrigger = true;
+            }
         }
         if (PorteEnd)
         {

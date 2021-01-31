@@ -159,12 +159,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Index: 0
-  IndexMax: 1
+  IndexMax: 3
   spawnSouv: {fileID: 1788453226}
   someThings:
   - {fileID: 0}
-  PorteEnd: 0
-  porteSprites: []
+  PorteEnd: 1
+  porteSprites:
+  - {fileID: 4640962423651306602, guid: fa22e128fbaf15d44ae777cb8abf0d29, type: 3}
+  - {fileID: -4173085126927199438, guid: fa22e128fbaf15d44ae777cb8abf0d29, type: 3}
+  - {fileID: 1502485880736021948, guid: fa22e128fbaf15d44ae777cb8abf0d29, type: 3}
+  - {fileID: -9191465745611432352, guid: fa22e128fbaf15d44ae777cb8abf0d29, type: 3}
   sr: {fileID: 0}
 --- !u!61 &775779711892538541
 BoxCollider2D:
