@@ -14,9 +14,4 @@ public class Menu : MonoBehaviour
     {
         Application.Quit();
     }
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
 }
