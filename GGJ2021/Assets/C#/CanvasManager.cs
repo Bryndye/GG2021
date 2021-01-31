@@ -29,7 +29,7 @@ public class CanvasManager : Singleton<CanvasManager>
         if (Instance != this)
             Destroy(this);
 
-        cm = GetComponent<CameraManager>();
+        cm = CameraManager.Instance;
         anim = GetComponent<Animator>();
         BandeDisAppear();
     }
