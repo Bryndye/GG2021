@@ -12,4 +12,9 @@ public class BackToMenu : MonoBehaviour
             SceneManager.LoadScene("Menu");
         }
     }
+
+    public void Back()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }

@@ -9,7 +9,8 @@ public class Event_Trigger : MonoBehaviour
     {
         Dialogue,
         Cinematic,
-        Femme
+        Femme,
+        ending
     }
     public TypeEvent Type;
     CanvasManager cm;
@@ -54,13 +55,20 @@ public class Event_Trigger : MonoBehaviour
                 case TypeEvent.Femme:
                     Femme();
                     break;
+                case TypeEvent.ending:
+                    CallEnd();
+                    break;
                 default:
                     break;
             }
             done = true;
         }
     }
-
+    private void CallEnd()
+    {
+        pm.InCinematic = true;
+        cm.EndingCalled();
+    }
     private void EventDialogue()
     {
         if (cm.dialogueHere && dialogues.Length > 0)

@@ -8,6 +8,7 @@ public class CanvasManager : Singleton<CanvasManager>
     //[SerializeField] Button bt_continue;
     CameraManager cm;
     public Animator anim;
+    public GameObject Ending;
 
     [Header("Dialogues")]
     public Text dialogueHere;
@@ -33,11 +34,11 @@ public class CanvasManager : Singleton<CanvasManager>
     }
 
     #region visual
-    private void UpdateDark()
+    public void EndingCalled()
     {
-        //convert float to byte color.r = (byte) ((int) (Mathf.Lerp(appear.a, btt, TimeTransition)) % 256)
-
+        Ending.SetActive(true);
     }
+
     public void BandeAppear()
     {
         anim.SetTrigger("Appear");
@@ -129,6 +130,5 @@ public class CanvasManager : Singleton<CanvasManager>
             skip = true;
             Invoke(nameof(NextDialogue), 2f);
         }
-        UpdateDark();
     }
 }

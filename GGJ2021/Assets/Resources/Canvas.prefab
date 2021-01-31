@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  Ending: {fileID: 7076149489156775914}
   dialogueHere: {fileID: 377542721548403397}
   sentences: []
   sentencesStock: []
@@ -815,6 +816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8253742491553259344}
   - component: {fileID: 8802421967010771377}
+  - component: {fileID: 4328859030596532879}
   m_Layer: 5
   m_Name: Ending
   m_TagString: Untagged
@@ -862,6 +864,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4328859030596532879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7076149489156775914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e65c433186697f4fa94ce10eeb89058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7332223819363965733
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,22 +954,28 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Programmer
+  m_Text: 'Programmer/ Narratif Design
 
     CLUZEL Hugo
 
 
 
-    Artist 2D
+    Artist 2D/ Sound Design
 
-    ROUAULT Jules
+    ROUAULT
+    Jules
 
 
 
-    Level
-    Designer
+    Level Designer/ Narratif Design
 
-    ANDRIKIAN Elena'
+    ANDRIKIAN Elena
+
+
+    Actress
+
+    Thanks
+    to RATIE Manon'
 --- !u!1 &7420206573273587421
 GameObject:
   m_ObjectHideFlags: 0
