@@ -396,6 +396,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1379220698, guid: c8d4fe49b898b344ca4fa51e5ff01a1f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.17
+      objectReference: {fileID: 0}
     - target: {fileID: 50076860351471887, guid: c8d4fe49b898b344ca4fa51e5ff01a1f, type: 3}
       propertyPath: m_Name
       value: DEATH (1)
