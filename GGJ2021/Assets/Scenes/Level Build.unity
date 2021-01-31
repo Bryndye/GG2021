@@ -810,10 +810,10 @@ MonoBehaviour:
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.3882353, g: 0.27027708, b: 0.1882353, a: 1}
+  m_Color: {r: 1, g: 0.7918979, b: 0.6462264, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 000000009d4ed6ec
+  m_ApplyToSortingLayers: 00000000d199e7b2
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -2787,7 +2787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1378695423168325682, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1378695423168325682, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2855,7 +2855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1378695423674992658, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1378695423674992658, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
       propertyPath: m_SortingOrder
@@ -2863,7 +2863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1378695423674992658, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
       propertyPath: m_SortingLayerID
-      value: -321499491
+      value: -1293444655
       objectReference: {fileID: 0}
     - target: {fileID: 1378695423674992660, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50673,8 +50673,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -321499491
-  m_SortingLayer: 0
+  m_SortingLayerID: -1293444655
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 3204480812468917802, guid: 95eb2f9459ebccb4bab6493ca41fe854, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -51729,6 +51729,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 406484331191031336, guid: ed322cb829a85ea4cb8b61478e264119, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 406484331191031336, guid: ed322cb829a85ea4cb8b61478e264119, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1293444655
+      objectReference: {fileID: 0}
     - target: {fileID: 1420230696264702983, guid: ed322cb829a85ea4cb8b61478e264119, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -51776,6 +51784,30 @@ PrefabInstance:
     - target: {fileID: 1420230696264702986, guid: ed322cb829a85ea4cb8b61478e264119, type: 3}
       propertyPath: m_Name
       value: Magic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639060699349684923, guid: ed322cb829a85ea4cb8b61478e264119, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639060699349684923, guid: ed322cb829a85ea4cb8b61478e264119, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1293444655
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654944940972764621, guid: ed322cb829a85ea4cb8b61478e264119, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654944940972764621, guid: ed322cb829a85ea4cb8b61478e264119, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1293444655
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457510843595195614, guid: ed322cb829a85ea4cb8b61478e264119, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457510843595195614, guid: ed322cb829a85ea4cb8b61478e264119, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1293444655
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed322cb829a85ea4cb8b61478e264119, type: 3}
