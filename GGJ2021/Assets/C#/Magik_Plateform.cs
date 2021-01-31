@@ -6,6 +6,7 @@ public class Magik_Plateform : MonoBehaviour
 {
     BoxCollider2D b;
     public SpriteRenderer[] sr;
+    public bool activated;
     private void Awake() { 
         b = GetComponent<BoxCollider2D>();
         Desactive();
@@ -15,6 +16,7 @@ public class Magik_Plateform : MonoBehaviour
     {
         if (b.isTrigger)
         {
+            activated = true;
             if (sr.Length > 0)
             {
                 for (int i = 0; i < sr.Length; i++)
@@ -32,9 +34,10 @@ public class Magik_Plateform : MonoBehaviour
     {
         if (sr.Length >0)
         {
+            activated = false;
             for (int i = 0; i < sr.Length; i++)
             {
-                sr[i].color = new Color32(255, 255, 255, 150);
+                sr[i].color = new Color32(255, 255, 255, 130);
             }
         }
         //b.enabled = false;

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
+    Dead_zone dz;
     Player_movement pm;
     CanvasManager cm;
     public Transform SpawnPoint;
@@ -12,6 +13,7 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private void Awake()
     {
+        dz = Dead_zone.Instance;
         pm = Player_movement.Instance;
         cm = CanvasManager.Instance;
     }
@@ -32,7 +34,7 @@ public class SpawnManager : Singleton<SpawnManager>
         if (SpawnPoint != null && !done)
         {
             done = true;
-
+            dz.can = false;
             cm.anim.SetTrigger("Dead");
             Invoke(nameof(SetPlayer), 5.5f);
         }
@@ -44,5 +46,7 @@ public class SpawnManager : Singleton<SpawnManager>
         pm.transform.rotation = Quaternion.identity;
         pm.InCinematic = false;
         done = false;
+        dz.posXMax = pm.transform.position.x;
+        dz.can = true;
     }
 }

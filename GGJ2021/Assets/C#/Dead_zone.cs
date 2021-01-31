@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dead_zone : MonoBehaviour
+public class Dead_zone : Singleton<Dead_zone>
 {
+    public bool can = true;
     CanvasManager cm;
     Player_movement pm;
     SpawnManager sm;
 
     [SerializeField] float rangeBetween = 10;
     [SerializeField] float posXMin;
-    [SerializeField] float posXMax;
+    public float posXMax;
 
     [Header("Chrono")]
     public bool IndeadZone;
@@ -24,23 +25,27 @@ public class Dead_zone : MonoBehaviour
         pm = Player_movement.Instance;
         sm = SpawnManager.Instance;
         posXMax = transform.position.x;
+        can = true;
     }
 
     private void Update()
     {
-        CheckPos();
-        if (IndeadZone)
+        if (can)
         {
-            timer += Time.deltaTime;
-            if (timer >= timeMax)
+            CheckPos();
+            if (IndeadZone)
             {
-                sm.Respawn();
+                timer += Time.deltaTime;
+                if (timer >= timeMax)
+                {
+                    sm.Respawn();
+                    timer = 0;
+                }
+            }
+            else
+            {
                 timer = 0;
             }
-        }
-        else
-        {
-            timer = 0;
         }
     }
 
