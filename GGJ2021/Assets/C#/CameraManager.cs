@@ -26,7 +26,6 @@ public class CameraManager : Singleton<CameraManager>
 
     private void Awake()
     {
-
         //audioS = GetComponent<AudioSource>();
     }
 

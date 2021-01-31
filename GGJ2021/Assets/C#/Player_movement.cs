@@ -35,8 +35,8 @@ public class Player_movement : Singleton<Player_movement>
 
     private void Awake()
     {
-        if (Instance != this)
-            Destroy(this);
+        /*if (Instance != this)
+            Destroy(gameObject);*/
         cc = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         cm = CanvasManager.Instance;

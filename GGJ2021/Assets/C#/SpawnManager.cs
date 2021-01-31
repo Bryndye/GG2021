@@ -13,10 +13,10 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private void Awake()
     {
-        if (Instance != this)
+        /*if (Instance != this)
         {
-            Destroy(this);
-        }
+            Destroy(gameObject);
+        }*/
         dz = Dead_zone.Instance;
         pm = Player_movement.Instance;
         cm = CanvasManager.Instance;

@@ -21,10 +21,10 @@ public class Dead_zone : Singleton<Dead_zone>
     bool done, doneA;
     private void Awake()
     {
-        if (Instance != this)
+        /*if (Instance != this)
         {
-            Destroy(this);
-        }
+            Destroy(gameObject);
+        }*/
         cm = CanvasManager.Instance;
         pm = Player_movement.Instance;
         sm = SpawnManager.Instance;
