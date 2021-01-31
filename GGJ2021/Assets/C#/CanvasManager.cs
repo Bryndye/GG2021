@@ -10,6 +10,7 @@ public class CanvasManager : Singleton<CanvasManager>
     public Animator anim;
     public GameObject Ending;
     public GameObject PressF;
+    public GameObject ClickOniT;
 
     [Header("Dialogues")]
     public Text dialogueHere;

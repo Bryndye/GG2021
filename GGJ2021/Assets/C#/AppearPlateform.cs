@@ -28,10 +28,18 @@ public class AppearPlateform : MonoBehaviour
             Magik_Plateform mp = hit.collider.GetComponent<Magik_Plateform>();
             if (mp.activated)
             {
+                if (cm.ClickOniT != null)
+                {
+                    cm.ClickOniT.SetActive(false);
+                }
                 light_mouse.gameObject.SetActive(false);
             }
             else
             {
+                if (cm.ClickOniT != null)
+                {
+                    cm.ClickOniT.SetActive(true);
+                }
                 light_mouse.gameObject.SetActive(true);
             }
             //Debug.Log("Target Position: " + hit.collider.gameObject.name);
@@ -42,6 +50,10 @@ public class AppearPlateform : MonoBehaviour
         }
         else
         {
+            if (cm.ClickOniT != null)
+            {
+                cm.ClickOniT.SetActive(false);
+            }
             light_mouse.gameObject.SetActive(false);
         }
     }

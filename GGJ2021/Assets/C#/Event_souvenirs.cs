@@ -27,6 +27,7 @@ public class Event_souvenirs : MonoBehaviour
     public void SendSouvenir(Player_movement pm)
     {
         Index++;
+        sr.GetComponent<Animator>().SetTrigger("Door");
         Instantiate(Resources.Load<GameObject>("Particle_souvenir"), spawnSouv.position, Quaternion.identity);
     }
 
@@ -43,9 +44,10 @@ public class Event_souvenirs : MonoBehaviour
                 sr.GetComponent<BoxCollider2D>().isTrigger = true;
             }
         }
+        /*
         if (PorteEnd)
         {
             sr.sprite = porteSprites[Index];
-        }
+        }*/
     }
 }
