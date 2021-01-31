@@ -26,8 +26,7 @@ public class CameraManager : Singleton<CameraManager>
 
     private void Awake()
     {
-        if (Instance != this)
-            Destroy(this);
+
         //audioS = GetComponent<AudioSource>();
     }
 

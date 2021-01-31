@@ -27,7 +27,9 @@ public class CanvasManager : Singleton<CanvasManager>
     void Awake()
     {
         if (Instance != this)
+        {
             Destroy(this);
+        }
 
         cm = CameraManager.Instance;
         anim = GetComponent<Animator>();

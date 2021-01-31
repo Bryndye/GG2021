@@ -12,7 +12,7 @@ public class Dead_zone : Singleton<Dead_zone>
 
     [SerializeField] float rangeBetween = 10;
     [SerializeField] float posXMin;
-    public float posXMax;
+    [SerializeField]public float posXMax;
 
     [Header("Chrono")]
     public bool IndeadZone;
@@ -21,6 +21,10 @@ public class Dead_zone : Singleton<Dead_zone>
     bool done, doneA;
     private void Awake()
     {
+        if (Instance != this)
+        {
+            Destroy(this);
+        }
         cm = CanvasManager.Instance;
         pm = Player_movement.Instance;
         sm = SpawnManager.Instance;
@@ -70,6 +74,7 @@ public class Dead_zone : Singleton<Dead_zone>
         {
             done = true;
             doneA = false;
+            print(cm);
             cm.BandeDisAppear();
             IndeadZone = false;
         }
