@@ -251,7 +251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a95c50dba72d24da48556e0a1b049c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn: {fileID: 0}
   InCinematic: 0
   CanMove: 1
   rb: {fileID: 1378695423168325680}
