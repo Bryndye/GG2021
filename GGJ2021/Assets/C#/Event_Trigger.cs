@@ -67,6 +67,7 @@ public class Event_Trigger : MonoBehaviour
     private void CallEnd()
     {
         pm.InCinematic = true;
+        pm.Anim_Player.SetTrigger("Reunion");
         cm.EndingCalled();
     }
     private void EventDialogue()

@@ -6471,6 +6471,18 @@ PrefabInstance:
       propertyPath: light_mouse
       value: 
       objectReference: {fileID: 401981015}
+    - target: {fileID: 132038233, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075694919, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 808015892849271299, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1378695423168325682, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -6527,9 +6539,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1378695423168325685, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1378695423674992663, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2562206865703772391, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
       propertyPath: m_Size.x
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295737474226064547, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dabb9745dce146348b4bce14ff00b554, type: 3}
@@ -6790,7 +6814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5793017228564351683, guid: 83f959ac801f14147b010f1790194062, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5793017228564351742, guid: 83f959ac801f14147b010f1790194062, type: 3}
       propertyPath: m_RootOrder

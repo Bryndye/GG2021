@@ -37,6 +37,10 @@ public class CanvasManager : Singleton<CanvasManager>
     #region visual
     public void EndingCalled()
     {
+        Invoke(nameof(ItsDone), 6f);
+    }
+    private void ItsDone()
+    {
         Ending.SetActive(true);
     }
 
