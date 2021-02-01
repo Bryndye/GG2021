@@ -27,7 +27,10 @@ public class Event_souvenirs : MonoBehaviour
     public void SendSouvenir(Player_movement pm)
     {
         Index++;
-        sr.GetComponent<Animator>().SetTrigger("Door");
+        if (PorteEnd)
+        {
+            sr.GetComponent<Animator>().SetTrigger("Door");
+        }
         Instantiate(Resources.Load<GameObject>("Particle_souvenir"), spawnSouv.position, Quaternion.identity);
     }
 
